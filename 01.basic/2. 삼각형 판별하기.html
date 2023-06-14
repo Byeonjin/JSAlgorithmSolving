@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 나의 풀이: 제일 긴 변을 제외한 나머지 두 변의 길이의 합을 구하려고 if문 사이에서 구하려다 보니 코드가 너무 길어졌다.
+      // 그냥 total = a + b + c - max로 구하면 편하다.
+
+      // function solution(a, b, c) {
+      //   let answer = "YES";
+      //   let max = Number(),
+      //     sum = 0;
+
+      //   if (a > b) {
+      //     max = a;
+      //     sum += b;
+      //   } else {
+      //     max = b;
+      //     sum += a;
+      //   }
+
+      //   if (c > max) {
+      //     sum += max;
+      //     max = c;
+      //   } else {
+      //     sum += c;
+      //   }
+
+      //   if (sum <= max) answer = "NO";
+
+      //   return answer;
+      // }
+
+      console.log(solution(6, 7, 13));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = [];
+        let total = arr.reduce((cnt, curV) => {
+          return cnt + curV;
+        }, 0);
+        let flag = 0;
+
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = i + 1; j < arr.length; j++) {
+            if (total - arr[i] - arr[j] === 100) {
+              // arr.splice(i, 1);
+              // arr.splice(j, 1);
+              // 이렇게 하면 i가 j보다 인덱스가 앞에 있기 때문에 arr[j]에 해당하는 값이 앞으로 땡겨져 예상과 다른 값이 나온다.
+              // 이를 해결하기 위해선 순서를 바꾸면 된다.
+              arr.splice(j, 1);
+              arr.splice(i, 1);
+              //이렇게만 끝내면 또다른 문제가 발생하는데, 만약에 arr을 다 순회하게 되었는데 답에 해당하는 쌍이 2번 나왔다고 가정하면 총 4명의 난쟁이가 사라진다.
+              // 그래서 첫번째로 답이 나오면 for문을 break해줘야한다. 이를 이용해 return이나 flag 변수를 이용할 수 있다.
+              flag = 1;
+              break;
+            }
+          }
+          if (flag === 1) {
+            break;
+          }
+        }
+
+        return (answer = arr);
+      }
+
+      let arr = [20, 7, 23, 19, 10, 15, 25, 8, 13];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>

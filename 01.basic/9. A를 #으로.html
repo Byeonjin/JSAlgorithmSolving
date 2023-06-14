@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        let answer = str;
+
+        answer = answer.replace(/NA/g, "#"); // 정규표현식을 이용한 텍스트 대체
+
+        return answer;
+      }
+
+      let str = "BANANA";
+
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
