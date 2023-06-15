@@ -1,0 +1,57 @@
+<!-- <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        str = str.toUpperCase();
+        let answer = "YES";
+        let halfIdx = Math.floor(str.length / 2);
+        let tmp = [];
+        for (let i = 0; i < str.length; i++) {
+          if (str.length % 2 !== 0 && i === halfIdx) {
+            continue;
+          }
+
+          if (i < halfIdx) {
+            tmp.push(str[i]);
+          } else {
+            if (tmp.pop() !== str[i]) {
+              answer = "NO";
+            }
+          }
+        }
+
+        return answer;
+      }
+      let str = "1225";
+      console.log(solution(str));
+    </script>
+  </body>
+</html> -->
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        let answer = "YES";
+        str = str.toLowerCase();
+
+        str = str.replace(/[^a-z]/g, "");
+
+        if (str !== str.split("").reverse().join("")) answer = "NO";
+        return answer;
+      }
+
+      let str = "found7, time: stu2aaafdy; Yduts; emit, 7Dnuof";
+
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

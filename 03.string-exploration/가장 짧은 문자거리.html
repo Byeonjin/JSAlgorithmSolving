@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(str, c) {
+        const n = str.length;
+        let answer = new Array(n).fill(Number.MAX_SAFE_INTEGER);
+        let cntL = 0,
+          cntR = 0;
+
+        for (let i = str.indexOf(c); i < n; i++) {
+          if (str[i] === c) {
+            cntL = 0;
+            answer[i] = 0;
+          } else {
+            cntL++;
+            answer[i] = cntL;
+          }
+        }
+
+        for (let j = str.lastIndexOf(c); j >= 0; j--) {
+          if (str[j] === c) {
+            cntR = 0;
+          } else {
+            cntR++;
+            if (answer[j] > cntR) {
+              answer[j] = cntR;
+            }
+          }
+        }
+
+        answer = answer.join("");
+
+        return answer;
+      }
+      let str = "teachermode";
+      console.log(solution(str, "e"));
+    </script>
+  </body>
+</html>
