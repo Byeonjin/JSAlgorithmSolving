@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function combination(arr, N) {
+        let result = [];
+        if (N === 1) {
+          return arr.map((ele) => [ele]);
+        }
+
+        for (let i = 0; i < arr.length - 1; i++) {
+          let fixed = arr[i];
+          let restArr = arr.slice(i + 1);
+          let restComb = combination(restArr, N - 1);
+          let atteched = restComb.map((ele) => [fixed, ...ele]);
+
+          result.push(...atteched);
+        }
+
+        return result;
+      }
+
+      function solution(n, k, card) {
+        let answer = 0;
+
+        let tmp = combination(card, k);
+        let sumArr = [];
+        tmp.forEach((ele) => {
+          sumArr.push(
+            ele.reduce((acc, cnt) => {
+              return acc + cnt;
+            })
+          );
+        });
+
+        sumArr = new Set(sumArr);
+        sumArr = [...sumArr];
+        sumArr.sort((a, b) => b - a);
+        console.log(sumArr);
+
+        answer = sumArr[k - 1];
+
+        return answer;
+      }
+
+      let arr = [13, 15, 34, 23, 45, 65, 33, 11, 26, 42];
+      console.log(solution(10, 3, arr));
+    </script>
+  </body>
+</html>
