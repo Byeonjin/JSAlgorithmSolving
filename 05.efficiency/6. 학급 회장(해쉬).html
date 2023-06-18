@@ -1,0 +1,64 @@
+<!-- <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function hsF(char) {
+        return char.charCodeAt() - "A".charCodeAt();
+      }
+
+      function solution(s) {
+        let answer;
+        let arr = new Array(5).fill(0);
+
+        for (x of s) {
+          arr[hsF(x)] += 1;
+        }
+
+        answer = String.fromCharCode(
+          "A".charCodeAt() + arr.indexOf(Math.max(...arr))
+        );
+
+        return answer;
+      }
+
+      let str = "BACBACCACCBDEDE";
+      console.log(solution(str));
+    </script>
+  </body>
+</html> -->
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer;
+        const resultMap = new Map();
+
+        for (x of s) {
+          if (!resultMap.has(x)) resultMap.set(x, 1);
+          else resultMap.set(x, resultMap.get(x) + 1);
+        }
+
+        let max = Number.MIN_SAFE_INTEGER;
+        for ([key, val] of resultMap) {
+          if (max < val) {
+            max = val;
+            answer = key;
+          }
+        }
+
+        return answer;
+      }
+
+      let str = "BACBACCACCBDEDE";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

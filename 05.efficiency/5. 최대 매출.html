@@ -1,0 +1,61 @@
+<!-- <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(k, arr) {
+        let answer,
+          sum = 0;
+        let N = arr.length;
+
+        for (let i = 0; i <= N - k; i++) {
+          let tmp = arr.slice(i, i + k).reduce((acc, cnt) => {
+            return acc + cnt;
+          }, 0);
+
+          sum = Math.max(sum, tmp);
+        }
+
+        answer = sum;
+
+        return answer;
+      }
+
+      let a = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+      console.log(solution(3, a));
+    </script>
+  </body>
+</html> -->
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(k, arr) {
+        let answer = 0,
+          sum = 0;
+        let N = arr.length;
+
+        for (let i = 0; i < N; i++) {
+          if (i < k) {
+            sum += arr[i];
+          } else {
+            sum += arr[i];
+            sum -= arr[i - k];
+          }
+          answer = Math.max(sum, answer);
+        }
+
+        return answer;
+      }
+
+      let a = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+      console.log(solution(3, a));
+    </script>
+  </body>
+</html>
