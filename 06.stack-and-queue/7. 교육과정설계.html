@@ -1,0 +1,59 @@
+<!-- <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(need, plan) {
+        let answer = "YES";
+
+        let neededSubjects = need.split("");
+        let planedSubjects = plan.split("");
+
+        for (subject of planedSubjects) {
+          if (subject === neededSubjects[0]) {
+            neededSubjects.shift();
+          }
+        }
+
+        if (neededSubjects.length !== 0) {
+          answer = "NO";
+        }
+
+        return answer;
+      }
+
+      let a = "CBA";
+      let b = "CABA";
+      console.log(solution(a, b));
+      //위 풀이는 이런 입력이 올 경우 반례가 존재한다!
+    </script>
+  </body>
+</html> -->
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(need, plan) {
+        let answer = "YES";
+        let neededSubjects = need.split("");
+        for (let subject of plan) {
+          if (neededSubjects.includes(subject)) {
+            if (subject !== neededSubjects.shift()) return "NO";
+          }
+        }
+
+        return answer;
+      }
+
+      let a = "CBA";
+      let b = "CABA";
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
