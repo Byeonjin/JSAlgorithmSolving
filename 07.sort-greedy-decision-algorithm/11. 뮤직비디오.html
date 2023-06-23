@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function count(m, songs, dvd) {
+        let cnt = 1;
+        let tmp = 0;
+        songs.forEach((ele) => {
+          tmp += ele;
+          if (tmp > dvd) {
+            tmp = ele;
+            cnt += 1;
+          }
+        });
+
+        return cnt;
+      }
+
+      function solution(m, songs) {
+        let answer;
+        let rt = songs.reduce((acc, cnt) => {
+            return acc + cnt;
+          }, 0),
+          lt = parseInt(rt / m);
+        let mid;
+
+        while (lt <= rt) {
+          mid = parseInt((lt + rt) / 2);
+          if (count(m, songs, mid) <= m) {
+            answer = mid;
+            rt = mid - 1;
+          } else {
+            lt = mid + 1;
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>
