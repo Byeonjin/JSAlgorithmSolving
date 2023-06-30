@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 자체의 return값을 가지는 재귀함수
+
+      // function binarization(N, answer) {
+      //   if (N === 1) return "1";
+      //   else {
+      //     answer = binarization(parseInt(N / 2), answer);
+      //     let tmp;
+
+      //     if (N % 2 === 1) {
+      //       tmp = "1";
+      //     } else tmp = "0";
+
+      //     answer += tmp;
+
+      //     return answer;
+      //   }
+      // }
+
+      function solution(n) {
+        let answer = "";
+        function binarization(n) {
+          if (n === 0) return;
+          else {
+            binarization(parseInt(n / 2));
+            answer += String(n % 2);
+          }
+        }
+        console.log(answer);
+      }
+
+      solution(8);
+    </script>
+  </body>
+</html>
