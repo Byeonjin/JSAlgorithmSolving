@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        let answer = [];
+        let ch = Array.from({ length: n + 1 }, () => 0);
+
+        const D = (v) => {
+          if (v > n) {
+            console.log(ch);
+            return;
+          }
+
+          ch[v] = 1;
+          D(v + 1);
+          ch[v] = 0;
+          D(v + 1);
+        };
+
+        D(1);
+      }
+      console.log(solution(3));
+    </script>
+  </body>
+</html>
