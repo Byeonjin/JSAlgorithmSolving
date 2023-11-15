@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, ps, pt) {
+        let maxScore = Number.MIN_SAFE_INTEGER;
+        let flag = false;
+
+        const D = (idx, time, score) => {
+          if (time > m) return;
+          if (idx >= pt.length) {
+            maxScore = Math.max(maxScore, score);
+            return;
+          } else {
+            D(idx + 1, time + pt[idx], score + ps[idx]);
+            D(idx + 1, time, score);
+          }
+        };
+
+        D(0, 0, 0);
+
+        console.log(maxScore);
+      }
+
+      let ps = [10, 25, 15, 6, 7];
+      let pt = [5, 12, 8, 3, 4];
+      console.log(solution(20, ps, pt));
+    </script>
+  </body>
+</html>
