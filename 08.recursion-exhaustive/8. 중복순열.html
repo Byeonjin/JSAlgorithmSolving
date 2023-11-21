@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, m) {
+        let answer = [];
+        let tmp = Array(m).fill(0);
+
+        const D = (L) => {
+          if (L === m) {
+            console.log(tmp);
+            return;
+          } else {
+            for (let i = 1; i <= n; i++) {
+              tmp[L] = i;
+              D(L + 1);
+            }
+          }
+        };
+
+        D(0);
+
+        return answer;
+      }
+
+      console.log(solution(3, 2));
+    </script>
+  </body>
+</html>
